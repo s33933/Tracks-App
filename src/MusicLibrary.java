@@ -3,13 +3,13 @@ import java.util.ArrayList;
 public class MusicLibrary {
     private ArrayList<String> tracks;
     private ArrayList<Playlist> playlists;
-    private String playlistName;
+    private String libraryName;
     private String username;
 
     public MusicLibrary(String library, String username) {
         tracks = new ArrayList<>();
         playlists = new ArrayList<>();
-        this.playlistName = playlistName;
+        this.libraryName = libraryName;
         this.username = username;
     }
 
@@ -35,11 +35,11 @@ public class MusicLibrary {
 
     public void displayTracks() {
         System.out.println("Tracks in music library: ");
-        for (String track : tracks) {
             if (this.tracks.isEmpty()) {
                 System.out.println("No tracks found");
             } else {
-                System.out.println(tracks);
+                for (String track : tracks){
+                System.out.println(track);
             }
         }
     }
@@ -80,7 +80,7 @@ public class MusicLibrary {
         if (existingPlaylist != null) {
             existingPlaylist.display();
         } else {
-            System.out.println("Playlist does not exist in music library");
+            System.out.println("Playlist does not exist in music library " + this.libraryName + " " + this.username);
         }
     }
 
@@ -90,10 +90,10 @@ public class MusicLibrary {
         }
     }
 
-    public void searchTracks(String trackName) {
+    public void searchTracks(String phrase) {
         boolean found = false;
         for (String track : tracks){
-            if (track.toLowerCase().contains(trackName.toLowerCase())){
+            if (track.toLowerCase().contains(phrase.toLowerCase())){
                 System.out.println("Found track: " + track);
                 found = true;
             }
